@@ -2,6 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "./Main.css";
 import Card from './Card';
+import axios from 'axios'
 export class Main extends React.Component {
     constructor() {
         super()
@@ -35,11 +36,10 @@ export class Main extends React.Component {
     searchSlots = () => {
         let d = this.state.startDate.toLocaleDateString().replaceAll('/', '-')
         let p = this.state.pinCode
-        fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${p}&date=${d}`)
-            .then(res => res.json())
+        axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${p}&date=${d}`)
             .then((result) => {
-                if (result)
-                    this.setState({ results: result.centers });
+                if (result.data)
+                    this.setState({ results: result.data.centers });
             })
     }
 

@@ -34,7 +34,13 @@ export class Main extends React.Component {
     }
 
     searchSlots = () => {
-        let d = this.state.startDate.toLocaleDateString().replaceAll('/', '-')
+        let da = this.state.startDate.getDate()
+        let mn = this.state.startDate.getMonth()+1
+        if(da < 10)
+            da = "0"+da
+        if(mn < 10)
+            mn = "0"+mn
+        let d = da+"-"+mn+"-"+this.state.startDate.getFullYear()
         let p = this.state.pinCode
         axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${p}&date=${d}`)
             .then((result) => {

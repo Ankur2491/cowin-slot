@@ -35,7 +35,7 @@ export class Main extends React.Component {
     searchSlots = () => {
         let d = this.state.startDate.toLocaleDateString().replaceAll('/', '-')
         let p = this.state.pinCode
-        fetch(`https://cowin-slots-api.herokuapp.com/fetchSlots/${p}/${d}`)
+        fetch(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${p}&date=${d}`)
             .then(res => res.json())
             .then((result) => {
                 if (result)

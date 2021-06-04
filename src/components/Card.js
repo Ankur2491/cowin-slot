@@ -11,7 +11,7 @@ export class Card extends React.Component {
         sns = sessions.map(obj => <div><hr />
             <p><strong>Date:</strong> {obj.date}</p>
             <p><strong>Available Capacity: </strong>{obj.available_capacity}</p>
-            <p><strong>Min Age Limit:</strong> {obj.min_age_limit}</p>
+            <p><strong>Min Age Limit:</strong> <mark>{obj.min_age_limit}</mark></p>
             <p><strong>Vaccine: </strong>{obj.vaccine}</p>
             <p><strong>Slots:</strong> {this.formSlots(obj.slots)}</p>
             <p><strong>Available Capacity (Dose 1):</strong> <mark>{obj.available_capacity_dose1}</mark></p>

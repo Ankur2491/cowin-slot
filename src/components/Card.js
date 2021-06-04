@@ -1,4 +1,5 @@
 import React from "react";
+import "./Card.css";
 export class Card extends React.Component {
     formSlots = (slots) => {
         let slts;
@@ -13,8 +14,8 @@ export class Card extends React.Component {
             <p><strong>Min Age Limit:</strong> {obj.min_age_limit}</p>
             <p><strong>Vaccine: </strong>{obj.vaccine}</p>
             <p><strong>Slots:</strong> {this.formSlots(obj.slots)}</p>
-            <p><strong>Available Capacity (Dose 1):</strong> {obj.available_capacity_dose1}</p>
-            <p><strong>Available Capacity (Dose 2): </strong>{obj.available_capacity_dose2}</p>
+            <p><strong>Available Capacity (Dose 1):</strong> <mark>{obj.available_capacity_dose1}</mark></p>
+            <p><strong>Available Capacity (Dose 2): </strong><mark>{obj.available_capacity_dose2}</mark></p>
         </div>)
         return sns;
     }

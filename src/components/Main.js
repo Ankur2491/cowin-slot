@@ -6,7 +6,7 @@ import axios from 'axios'
 export class Main extends React.Component {
     constructor() {
         super()
-        this.state = { pinCode: '', startDate: new Date(), results: [] }
+        this.state = { pinCode: '', startDate: new Date(), results: [], showNoResults: false }
     }
 
     render() {
@@ -27,6 +27,7 @@ export class Main extends React.Component {
                     </div>
                 </div>
                 <hr />
+                {this.state.showNoResults == true ? <div align="center"><h3>No Results Found!</h3></div> : null}
                 {this.state.results.length > 0 ? <Card results={this.state.results} />
                     : null}
             </div>)
@@ -34,6 +35,7 @@ export class Main extends React.Component {
     }
 
     searchSlots = () => {
+        this.setState({showNoResults: false})
         let da = this.state.startDate.getDate()
         let mn = this.state.startDate.getMonth()+1
         if(da < 10)
@@ -44,8 +46,12 @@ export class Main extends React.Component {
         let p = this.state.pinCode
         axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=${p}&date=${d}`)
             .then((result) => {
-                if (result.data)
+                if (result.data){
+                    if(result.data.centers.length < 1){
+                        this.setState({showNoResults: true})
+                    }
                     this.setState({ results: result.data.centers });
+                }
             })
     }
 

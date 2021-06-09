@@ -1,3 +1,7 @@
 mark {
     background-color: aquamarine;
 }
+
+mark.noSlots {
+    background-color: red;
+}

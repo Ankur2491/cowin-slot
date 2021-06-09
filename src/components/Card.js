@@ -9,7 +9,7 @@ export class Card extends React.Component {
     formSession = (sessions) => {
         let sns;
         sns = sessions.map(obj => <div><hr />
-            <p><strong>Date:</strong> {obj.date}</p>
+            <p><strong>Date:</strong> {obj.date} {obj.available_capacity > 0 ? <strong><mark>(Available)</mark></strong> : <strong><mark class="noSlots">(Booked)</mark></strong>}</p>
             <p><strong>Available Capacity: </strong>{obj.available_capacity}</p>
             <p><strong>Min Age Limit:</strong> <mark>{obj.min_age_limit}</mark></p>
             <p><strong>Vaccine: </strong>{obj.vaccine}</p>

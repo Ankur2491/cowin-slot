@@ -3,10 +3,12 @@ import DatePicker from "react-datepicker";
 import "./Main.css";
 import Card from './Card';
 import axios from 'axios'
+// import stateData from '../states';
 export class Main extends React.Component {
     constructor() {
         super()
-        this.state = { pinCode: '', startDate: new Date(), results: [], showNoResults: false }
+        this.state = { pinCode: '', startDate: new Date(), results: [], showNoResults: false, age: 'all' }
+        // console.log(stateData);
     }
 
     render() {
@@ -22,13 +24,23 @@ export class Main extends React.Component {
                         <input type="text" onChange={(e) => this.handleChange(e)}></input>
                     </div>
                     <div class="col-md-1">
+                    <br/>
+                    <input type="radio" id="eighteenPlus" name="age" value="18" onChange={(e) => this.handleAge(e)}/>
+                    <label for="eighteenPlus">18+</label><br/>
+                    </div>
+                    <div class="col-md-1">
+                    <br/>
+                    <input type="radio" id="fortyFivePlus" name="age" value="45" onChange={(e) => this.handleAge(e)}/>
+                    <label for="fortyFivePlus">45+</label><br/>
+                    </div>
+                    <div class="col-md-1">
                         <br />
                         <button type="button" class="btn btn-info" onClick={this.searchSlots}>Search</button>
                     </div>
                 </div>
                 <hr />
-                {this.state.showNoResults == true ? <div align="center"><h3>No Results Found!</h3></div> : null}
-                {this.state.results.length > 0 ? <Card results={this.state.results} />
+                {this.state.showNoResults === true ? <div align="center"><h3>No Results Found!</h3></div> : null}
+                {this.state.results.length > 0 ? <Card results={this.state} />
                     : null}
             </div>)
 
@@ -60,6 +72,10 @@ export class Main extends React.Component {
     }
     setStartDate = (date) => {
         this.setState({ startDate: date })
+    }
+
+    handleAge = (event) =>{
+        this.setState({age: event.target.value})
     }
 }
 export default Main

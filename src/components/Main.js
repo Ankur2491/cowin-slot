@@ -70,6 +70,16 @@ export class Main extends React.Component {
                             <h6><strong>select district below</strong></h6>
                             <Select options={this.state.districts} key={this.state.districts} onChange={this.handleDistrict} />
                         </div>
+                        <div class="col-md-1">
+                            <br />
+                            <input type="radio" id="eighteenPlus" name="age" value="18" onChange={(e) => this.handleAge(e)} />
+                            <label for="eighteenPlus">18+</label><br />
+                        </div>
+                        <div class="col-md-1">
+                            <br />
+                            <input type="radio" id="fortyFivePlus" name="age" value="45" onChange={(e) => this.handleAge(e)} />
+                            <label for="fortyFivePlus">45+</label><br />
+                        </div>
 
                     </div> : null}
                 <hr />

@@ -8,8 +8,8 @@ export class Card extends React.Component {
     }
     formSession = (sessions) => {
         let sns;
-        sns = sessions.map(obj => { 
-            if (this.props.results.age !== 'all' && obj.min_age_limit === parseInt(this.props.results.age)) {
+        sns = sessions.map(obj => {
+            if (this.props.results.age !== 'all' && (this.props.results.age && (obj.min_age_limit === parseInt(this.props.results.age)))) {
                 return <div><hr />
                     <p><strong>Date:</strong> {obj.date} {obj.available_capacity > 0 ? <strong><mark>(Available)</mark></strong> : <strong><mark class="noSlots">(Booked)</mark></strong>}</p>
                     <p><strong>Available Capacity: </strong>{obj.available_capacity}</p>
@@ -32,7 +32,12 @@ export class Card extends React.Component {
                 </div>
             }
         })
-        if (sns[0] === undefined) {
+        let flag = true;
+        for(let i of sns){
+            if(i !== undefined)
+                flag = false;
+        }
+        if (flag) {
             return <div><hr /><p><strong><i><mark class="noSlots">No Slots available</mark></i></strong></p></div>
         }
         return sns;

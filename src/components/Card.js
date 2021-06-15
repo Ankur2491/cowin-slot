@@ -62,7 +62,6 @@ export class Card extends React.Component {
     }
     render() {
         let cards;
-        console.log("render");
         this.cleanSlots(this.props.results);
         cards = this.props.results.results.map(card => {
             if (card.sessions.length > 0 && this.checkSessions(card.sessions)) {

@@ -41,6 +41,11 @@ export class Main extends React.Component {
                             <input type="text" onChange={(e) => this.handleChange(e)}></input>
                         </div>
                         <div class="col-md-1">
+                        <br/>
+                        <input type="radio" id="fifteenPlus" name="age" value="15" onChange={(e) => this.handleAge(e)} />
+                        <label for="fifteenPlus">15+</label><br/>
+                        </div>
+                        <div class="col-md-1">
                             <br />
                             <input type="radio" id="eighteenPlus" name="age" value="18" onChange={(e) => this.handleAge(e)} />
                             <label for="eighteenPlus">18+</label><br />
@@ -69,6 +74,11 @@ export class Main extends React.Component {
                         <div class="col-md-2 offset-md-1">
                             <h6><strong>select district below</strong></h6>
                             <Select options={this.state.districts} key={this.state.districts} onChange={this.handleDistrict} />
+                        </div>
+                        <div class="col-md-1">
+                            <br />
+                            <input type="radio" id="fifteenPlus" name="age" value="15" onChange={(e) => this.handleAge(e)} />
+                            <label for="fifteenPlus">15+</label><br />
                         </div>
                         <div class="col-md-1">
                             <br />
